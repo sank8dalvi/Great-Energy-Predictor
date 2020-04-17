@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictions</title>
+    <style>
+        html { 
+            background: url({{url_for('static', filename = 'images/electric-tower.jpg')}}) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            }
+            #centerBox{
+                width: 1000px;
+                height: 40px;
+                top: 50%;
+                left: 50%;
+                margin: 15em auto 0 auto;
+                background-color: #FFF;
+                border-radius: 10px;
+                opacity: 0.8;
+            }
+            #predictionText{
+                margin: 0 auto;
+                width: 930px;
+            }
+    </style>
+</head>
+<body>
+    <div id="centerBox">
+        <h1 id="predictionText">The predicted enery consumption of the building is {{prediction}} kBTU</h1>
+    </div>
+
+</body>
+</html>

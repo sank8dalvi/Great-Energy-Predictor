@@ -1,5 +1,3 @@
-import timeit
-start = timeit.default_timer()
 import pandas as pd
 import numpy as np
 import warnings
@@ -29,12 +27,11 @@ cols = ['Education', 'Lodging/residential', 'Office',
        'Manufacturing/industrial', 'Services']
 label = {cols[i]:lab[i] for i in range(len(cols))}
 def getSavedModel(kind):
-    with open('modelsList.pkl', 'rb') as f:
+    with open('static/data/modelsList.pkl', 'rb') as f:
         mdls = pickle.load(f)
-    with open('historyList.pkl', 'rb') as f:
+    with open('static/data/historyList.pkl', 'rb') as f:
         hst = pickle.load(f)
     return mdls,hst
-
 categoricals = ["site_id", "building_id", "primary_use", "hour", "weekday",  "meter"]
 
 numericals = ["square_feet", "year_built", "air_temperature", "cloud_coverage",
@@ -46,6 +43,7 @@ def get_keras_data(df, num_cols, cat_cols):
     X = {col: np.array(df[col]) for col in cols}
     return X
 def run(ip):
+    models,history = getSavedModel('Imputed')
     inpCol = ['row_id', 'building_id', 'meter', 'timestamp', 'site_id', 'primary_use', 'square_feet', 'year_built', 'floor_count', 'air_temperature', 'cloud_coverage', 'dew_temperature', 'precip_depth_1_hr', 'sea_level_pressure', 'wind_direction', 'wind_speed']
     sample = pd.DataFrame(np.array(ip).reshape(1,16),columns = inpCol)
     for i in sample.columns:
@@ -69,7 +67,8 @@ def run(ip):
     for_prediction = get_keras_data(sample, numericals, categoricals)
     res[0] = np.expm1(sum([model.predict(for_prediction, batch_size=1) for model in models['model'+str(int(for_prediction['meter'][0]))]])/fold)
     print('Predicted Meter reading for given inputs : ',res[0],' units')
-models,history = getSavedModel('Imputed')
-ip = ['107','107','0','2016-01-01 00:00:00','3',label['Education'],'97532','2005','10','3.8','255','2.4','1','1020.9','240','3.1']
-run(ip)
-print(timeit.default_timer()-start)
+    return res[0]
+
+def predictEnergy():
+    ip = ['107','107','0','2016-01-01 00:00:00','3',label['Education'],'97532','2005','10','3.8','255','2.4','1','1020.9','240','3.1']
+    return run(ip)
