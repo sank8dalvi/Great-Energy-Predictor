@@ -70,6 +70,12 @@
 					<span class="focus-input100"></span>
 				</div>
 
+				<div class="wrap-input100 validate-input" data-validate="The time is required">
+					<span class="label-input100">Enter the time</span>
+					<input class="input100" type="text" name="timestamp" id="timestamp" value="10/24/1984" />
+					<span class="focus-input100"></span>
+				</div>
+
 				<div class="wrap-input100 validate-input" data-validate = "Message is required">
 					<span class="label-input100">Message</span>
 					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
@@ -95,6 +101,8 @@
 
 	<div id="dropDownSelect1"></div>
 
+
+
 <!--===============================================================================================-->
 	<script src="{{ url_for( 'static', filename = 'vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 <!--===============================================================================================-->
@@ -104,6 +112,7 @@
 	<script src="{{ url_for( 'static', filename = 'vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <!--===============================================================================================-->
 	<script src="{{ url_for( 'static', filename = 'vendor/select2/select2.min.js') }}"></script>
+
 	<script>
 		$(".selection-2").select2({
 			minimumResultsForSearch: 20,
@@ -125,6 +134,24 @@
   gtag('js', new Date());
 
   gtag('config', 'UA-23581568-13');
+
+
+</script>
+
+<script>
+	$(function() {
+		$('#timestamp').daterangepicker({
+			"singleDatePicker": true,
+			"timePicker": true,
+			"startDate": "01/01/2016",
+			"endDate": "01/01/2016",
+			locale: {
+			format: 'DD-MM-YYYY hh:mm A'
+			}
+		}, function(start, end, label) {
+		console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+		});
+	});
 </script>
 
 </body>
