@@ -20,4 +20,5 @@ def loadLoadingPage():
     print(currentPrediction)
     return render_template('loading.html', prediction = str(currentPrediction))
 
-app.run(threaded=False, debug=True)
+if __name__ == "__main__":
+    app.run(threaded=False, debug=True)

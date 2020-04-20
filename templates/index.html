@@ -34,37 +34,26 @@
 				<span class="contact100-form-title">
 					Great Energy predictor
 				</span>
-				<span id="loadingAnimation" class="contact100-form-title" style="display: none;">
-					Processing...
-				</span>
 
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
+				<div class="wrap-input100 validate-input" data-validate="Building ID is required">
 					<span class="label-input100">Building ID</span>
-					<input class="input100" type="text" name="name" placeholder="Enter the id of the building id">
+					<input list="building_id_list" class="input100" type="number" name="building_id" placeholder="Enter the id of the building">
 					<span class="focus-input100"></span>
+					<datalist id="building_id_list">
+						{% for i in range(1449)%}
+							<option value="{{i}}">{{i}}</option>
+						{% endfor %}
+					</datalist>
 				</div>
 
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Meter</span>
 					<div>
-						<select class="selection-2" name="service">
+						<select class="selection-2" name="meter">
 							<option>0</option>
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
-						</select>
-					</div>
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Budget</span>
-					<div>
-						<select class="selection-2" name="budget">
-							<option>Select Budget</option>
-							<option>1500 $</option>
-							<option>2000 $</option>
-							<option>2500 $</option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -76,9 +65,108 @@
 					<span class="focus-input100"></span>
 				</div>
 
-				<div class="wrap-input100 validate-input" data-validate = "Message is required">
-					<span class="label-input100">Message</span>
-					<textarea class="input100" name="message" placeholder="Your message here..."></textarea>
+				<div class="wrap-input100 validate-input" data-validate="Site Id is required">
+					<span class="label-input100">Site ID</span>
+					<input list="site_id_list" class="input100" type="number" name="site_id" placeholder="Enter the id of the site">
+					<span class="focus-input100"></span>
+					<datalist id="site_id_list">
+						{% for i in range(16)%}
+							<option value="{{i}}">{{i}}</option>
+						{% endfor %}
+					</datalist>
+				</div>
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Primary Use</span>
+					<div>
+						<select class="selection-2" name="primary_use">
+							<option>Select primary usage</option>
+							{% for i in ['Education', 'Lodging/residential', 'Office',
+							'Entertainment/public assembly', 'Other', 'Retail', 'Parking',
+							'Public services', 'Warehouse/storage', 'Food sales and service',
+							'Religious worship', 'Healthcare', 'Utility', 'Technology/science',
+							'Manufacturing/industrial', 'Services'] %}
+								<option>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Area is required">
+					<span class="label-input100">Area (square feet)</span>
+					<input class="input100" type="number" name="square_feet" placeholder="Enter the area in square feet">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Year built is required">
+					<span class="label-input100">Year the building was built</span>
+					<input list="year_list" class="input100" type="number" name="year_built" placeholder="Enter the year the building was built">
+					<span class="focus-input100"></span>
+					<datalist id="year_list">
+						{% for i in range(1900,2018)%}
+							<option value="{{i}}">{{i}}</option>
+						{% endfor %}
+					</datalist>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Floor count is required">
+					<span class="label-input100">Floor count</span>
+					<input class="input100" type="number" name="floor_count" placeholder="Enter the number of floors">
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input" data-validate="Air temperature is required">
+					<span class="label-input100">Air Temperature</span>
+					<input class="input100" type="text" name="air_temperature" placeholder="Enter the temperature of air">
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Cloud coverage</span>
+					<div>
+						<select class="selection-2" name="cloud_coverage">
+							<option></option>
+							{% for i in range(0,10)%}
+								<option>{{i}}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+								
+				<div class="wrap-input100 validate-input" data-validate="Dew temperature is required">
+					<span class="label-input100">Dew Temperature</span>
+					<input class="input100" type="text" name="dew_temperature" placeholder="Enter the temperature of dew">
+					<span class="focus-input100"></span>
+				</div>
+								
+				<div class="wrap-input100 validate-input" data-validate="Precipitation depth is required">
+					<span class="label-input100">Precipitation per hour</span>
+					<input class="input100" type="text" name="precip_depth_1_hr" placeholder="Enter precipitation depth per hour">
+					<span class="focus-input100"></span>
+				</div>
+								
+				<div class="wrap-input100 validate-input" data-validate="Sea level pressure is required">
+					<span class="label-input100">Sea level pressure</span>
+					<input class="input100" type="week" name="sea_level_pressure" placeholder="Enter the sea level pressure">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Wind direction is required">
+					<span class="label-input100">Wind direction (degrees)</span>
+					<input list="wind_direction_list" class="input100" type="number" name="wind_direction" placeholder="Enter the wind direction in degrees">
+					<span class="focus-input100"></span>
+					<datalist id="wind_direction_list">
+						{% for i in range(0,361)%}
+							<option value="{{i}}">{{i}}</option>
+						{% endfor %}
+					</datalist>
+				</div>
+								
+				<div class="wrap-input100 validate-input" data-validate="Wind speed is required">
+					<span class="label-input100">Wind speed</span>
+					<input class="input100" type="number" name="wind_speed" placeholder="Enter the temperature of air">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -93,6 +181,11 @@
 						</button>
 					</div>
 				</div>
+				<br>
+				<span id="loadingAnimation" class="contact100-form-title" style="display: none;">
+					Processing...
+				</span>
+
 			</form>
 		</div>
 	</div>
@@ -146,7 +239,7 @@
 			"startDate": "01/01/2016",
 			"endDate": "01/01/2016",
 			locale: {
-			format: 'DD-MM-YYYY hh:mm A'
+			format: 'YYYY-MM-DD HH:mm:ss'
 			}
 		}, function(start, end, label) {
 		console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
