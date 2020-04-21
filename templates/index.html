@@ -95,7 +95,7 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Area is required">
 					<span class="label-input100">Area (square feet)</span>
-					<input class="input100" type="number" name="square_feet" placeholder="Enter the area in square feet">
+					<input class="input100" type="text" name="square_feet" placeholder="Enter the area in square feet">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -149,13 +149,13 @@
 								
 				<div class="wrap-input100 validate-input" data-validate="Sea level pressure is required">
 					<span class="label-input100">Sea level pressure</span>
-					<input class="input100" type="week" name="sea_level_pressure" placeholder="Enter the sea level pressure">
+					<input class="input100" type="text" name="sea_level_pressure" placeholder="Enter the sea level pressure">
 					<span class="focus-input100"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate="Wind direction is required">
 					<span class="label-input100">Wind direction (degrees)</span>
-					<input list="wind_direction_list" class="input100" type="number" name="wind_direction" placeholder="Enter the wind direction in degrees">
+					<input list="wind_direction_list" class="input100" type="text" name="wind_direction" placeholder="Enter the wind direction in degrees">
 					<span class="focus-input100"></span>
 					<datalist id="wind_direction_list">
 						{% for i in range(0,361)%}
@@ -166,7 +166,7 @@
 								
 				<div class="wrap-input100 validate-input" data-validate="Wind speed is required">
 					<span class="label-input100">Wind speed</span>
-					<input class="input100" type="number" name="wind_speed" placeholder="Enter the temperature of air">
+					<input class="input100" type="text" name="wind_speed" placeholder="Enter the temperature of air">
 					<span class="focus-input100"></span>
 				</div>
 

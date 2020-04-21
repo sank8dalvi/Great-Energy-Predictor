@@ -15,10 +15,27 @@ def loadLoadingPage():
         'Manufacturing/industrial', 'Services']
     label = {cols[i]:lab[i] for i in range(len(cols))}
     print("Start predictions........")
-    ip = ['107','107','0','2016-01-01 00:00:00','3',label['Education'],'97532','2005','10','3.8','255','2.4','1','1020.9','240','3.1']
+    ip = [request.form['building_id'],
+        request.form['building_id'],
+        request.form['meter'],
+        request.form['timestamp'],
+        request.form['site_id'],
+        label[request.form['primary_use']],
+        request.form['square_feet'],
+        request.form['year_built'],
+        request.form['floor_count'],
+        request.form['air_temperature'],
+        request.form['cloud_coverage'],
+        request.form['dew_temperature'],
+        request.form['precip_depth_1_hr'],
+        request.form['sea_level_pressure'],
+        request.form['wind_direction'],
+        request.form['wind_speed']
+        ]
+    # ip = ['107','107','0','2016-01-01 00:00:00','3',label['Education'],'97532','2005','10','3.8','255','2.4','1','1020.9','240','3.1']
     currentPrediction = run(ip)
     print(currentPrediction)
     return render_template('loading.html', prediction = str(currentPrediction))
 
 if __name__ == "__main__":
-    app.run(threaded=False, debug=True)
+    app.run(threaded=False)
